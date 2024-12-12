@@ -57,7 +57,10 @@
                 >
                     <div>
                         <h3 class="font-bold text-lg">
-                            {{ hero.name }} {{ hero.surname }}
+                            {{ hero.name }}
+                            <span class="text-sm text-gray-500"
+                                >({{ hero.surname }})</span
+                            >
                         </h3>
                         <div class="text-sm text-gray-600 mt-1">
                             {{ 'DASHBOARD.STATS.HP' | translate }}:

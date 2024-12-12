@@ -39,14 +39,7 @@
                 >
                     {{ 'COMMON.DASHBOARD' | translate }}
                 </a>
-                <a
-                    routerLink="/weapons"
-                    [class.active]="currentRoute === 'weapons'"
-                    class="py-2 px-4 hover:bg-opacity-5 border border-white text-white bricolage font-bold nav-button"
-                    (click)="closeMenuOnMobile()"
-                >
-                    {{ 'COMMON.WEAPONS' | translate }}
-                </a>
+
                 <a
                     routerLink="/heroes"
                     [class.active]="currentRoute === 'heroes'"
@@ -54,6 +47,14 @@
                     (click)="closeMenuOnMobile()"
                 >
                     {{ 'COMMON.HEROES' | translate }}
+                </a>
+                <a
+                    routerLink="/weapons"
+                    [class.active]="currentRoute === 'weapons'"
+                    class="py-2 px-4 hover:bg-opacity-5 border border-white text-white bricolage font-bold nav-button"
+                    (click)="closeMenuOnMobile()"
+                >
+                    {{ 'COMMON.WEAPONS' | translate }}
                 </a>
                 <a
                     routerLink="/lobby"
