@@ -25,7 +25,9 @@ const roomRounds = new Map()
 const roomPhrases = new Map()
 
 io.on('connection', (socket) => {
-    console.log('User connected:', socket.id)
+    const clientIP =
+        socket.handshake.headers['x-forwarded-for'] || socket.handshake.address
+    console.log(`User connected - ID: ${socket.id}, IP: ${clientIP}`)
 
     const sendRoomsListToAll = () => {
         const availableRooms = Array.from(rooms.entries())
@@ -166,7 +168,7 @@ io.on('connection', (socket) => {
     })
 
     socket.on('disconnect', () => {
-        console.log('User disconnected:', socket.id)
+        console.log(`User disconnected - ID: ${socket.id}, IP: ${clientIP}`)
         for (const [roomId, players] of rooms.entries()) {
             if (players.includes(socket.id)) {
                 cleanupRoom(roomId)

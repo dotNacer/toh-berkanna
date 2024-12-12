@@ -52,7 +52,7 @@ export class BattleService {
     private battleEvents = new Subject<BattleEvent>()
 
     constructor() {
-        this.socket = io('129.151.253.246:3000/', {
+        this.socket = io('https://live-game.titouan.me/', {
             transports: ['websocket'],
         })
 
