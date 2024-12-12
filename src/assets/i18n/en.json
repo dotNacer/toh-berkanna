@@ -1,0 +1,141 @@
+{
+    "COMMON": {
+        "WELCOME": "Welcome",
+        "LOADING": "Loading...",
+        "SAVE": "Save",
+        "CANCEL": "Cancel",
+        "DELETE": "Delete",
+        "EDIT": "Edit",
+        "WEAPONS": "Weapons",
+        "HEROES": "Heroes",
+        "DASHBOARD": "Dashboard",
+        "BATTLE": "Battle",
+        "VIEW_ALL": "View All",
+        "BACK": "Back",
+        "CONFIRM": "Confirm",
+        "POWER": "Power",
+        "DETAILS": "Details",
+        "SEARCH": "Search",
+        "SORT_BY": "Sort by",
+        "REMAINING_POINTS": "Remaining points"
+    },
+    "DASHBOARD": {
+        "TITLE": "Dashboard",
+        "TOTAL_HEROES": "Total Heroes",
+        "TOTAL_WEAPONS": "Total Weapons",
+        "TOTAL_POWER": "Total Power",
+        "TOP_HEROES": "Top Heroes",
+        "MOST_USED_WEAPONS": "Most Used Weapons",
+        "BEST_STAT": "Best stat",
+        "USED_BY": "Used by",
+        "HERO": "hero",
+        "HEROES": "heroes",
+        "STATS": {
+            "HP": "HP",
+            "ATK": "ATK"
+        }
+    },
+    "WEAPONS": {
+        "TITLE": "Weapons",
+        "ADD_WEAPON": "Add Weapon",
+        "EDIT_WEAPON": "Edit Weapon",
+        "DELETE_WEAPON": "Delete Weapon",
+        "SEARCH_PLACEHOLDER": "Search weapons...",
+        "SORT": {
+            "NAME": "Name",
+            "ATTACK_DAMAGE": "Attack Damage",
+            "CRITICAL_CHANCE": "Critical Chance",
+            "DODGE": "Dodge",
+            "HP": "HP"
+        },
+        "DELETE_CONFIRM": "Are you sure you want to delete this weapon?",
+        "NO_HEROES": "No heroes are currently using this weapon",
+        "HEROES_USING": "Heroes Using This Weapon",
+        "STATS": {
+            "ATTACK_DAMAGE": "Attack Damage",
+            "CRITICAL_CHANCE": "Critical Chance",
+            "DODGE": "Dodge",
+            "HP": "HP"
+        }
+    },
+    "HEROES": {
+        "TITLE": "Heroes",
+        "ADD_HERO": "Add Hero",
+        "EDIT_HERO": "Edit Hero",
+        "DELETE_HERO": "Delete Hero",
+        "DELETE_CONFIRM": "Are you sure you want to delete this hero?",
+        "REMOVE_WEAPON": "Remove Weapon",
+        "SEARCH_PLACEHOLDER": "Search heroes...",
+        "EQUIPMENT": "Equipment",
+        "EQUIPPED_WEAPON": "Equipped Weapon",
+        "AVAILABLE_WEAPONS": "Available Weapons",
+        "SORT": {
+            "NAME": "Name",
+            "HP": "HP",
+            "ATK": "ATK",
+            "NICKNAME": "Nickname",
+            "ATTACK_DAMAGE": "Attack Damage",
+            "CRITICAL_CHANCE": "Critical Chance",
+            "DODGE": "Dodge"
+        }
+    },
+    "STATS": {
+        "HP": "HP",
+        "ATK": "ATK",
+        "CRITICAL_CHANCE": "Critical Chance",
+        "DODGE": "Dodge",
+        "ATTACK_DAMAGE": "Attack Damage",
+        "NAME": "Name",
+        "NICKNAME": "Nickname"
+    },
+    "BATTLE": {
+        "LOBBY": {
+            "TITLE": "Battle Lobby",
+            "PLAYER_SETUP": "Player Setup",
+            "ENTER_NAME": "Enter your username",
+            "SET_USERNAME": "Confirm",
+            "CREATE_ROOM": "Create Room",
+            "ENTER_ROOM_NAME": "Enter room name",
+            "SET_ROOM_NAME": "Confirm",
+            "AVAILABLE_ROOMS": "Available Rooms",
+            "NO_ROOMS": "No rooms available",
+            "JOIN_ROOM": "Join Room"
+        },
+        "BATTLE": {
+            "PLAYER_WON": "won the game!",
+            "REDIRECT_TO_LOBBY": "Redirecting to lobby in a few seconds...",
+            "ROOM": "Room",
+            "LEAVE_ROOM": "Leave Room",
+            "PLAYERS_CONNECTED": "Connected Players",
+            "WAITING_PLAYER": "Waiting for another player...",
+            "SELECT_HERO": "Select your hero",
+            "SELECTED_HERO": "Selected hero: ",
+            "WAITING_OPPONENT": "Waiting for second player...",
+            "START_BATTLE": "Start Battle",
+            "READY": "Ready",
+            "PREPARED": "Waiting for other player...",
+            "PLAYER": "Player",
+            "ATTACK": "Attack",
+            "FIGHT_IN_PROGRESS": "Fight in progress",
+            "WAITING_ROOM": "Waiting Room"
+        },
+        "EVENTS": {
+            "DODGE": "dodged the attack from",
+            "HIT": "received",
+            "DAMAGE": "damage points from"
+        },
+        "ROUND": {
+            "ROUND": "Round",
+            "STATUS": "Status",
+            "WINNER": "Winner",
+            "ACTIONS": "Actions"
+        },
+        "ROUND_HISTORY": {
+            "TITLE": "Round History",
+            "WONNED": "won"
+        }
+    },
+    "HEADER": {
+        "TITLE": ".tower of heros"
+    }
+}

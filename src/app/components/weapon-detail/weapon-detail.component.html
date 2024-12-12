@@ -1,0 +1,194 @@
+<div *ngIf="weapon" class="flex flex-col gap-4 px-16 py-4">
+    <div class="flex gap-4 w-full justify-end">
+        <button
+            (click)="goBack()"
+            class="button bg-purple-500 cursor-pointer text-black bricolage border-2 border-black font-bold px-4 py-2"
+        >
+            {{ 'COMMON.BACK' | translate }}
+        </button>
+
+        <button
+            popovertarget="deletePopover"
+            class="button bg-red-500 cursor-pointer text-black bricolage border-2 border-black font-bold px-4 py-2"
+        >
+            {{ 'WEAPONS.DELETE_WEAPON' | translate }}
+        </button>
+    </div>
+    <div
+        id="deletePopover"
+        popover
+        class="bg-white border-2 border-black p-4 box-shadow-black"
+    >
+        <p class="text-xl bricolage font-bold mb-4">
+            {{ 'WEAPONS.DELETE_CONFIRM' | translate }}
+        </p>
+        <div class="flex gap-4">
+            <button
+                (click)="deleteWeapon()"
+                class="button bg-red-500 cursor-pointer text-black bricolage border-2 border-black font-bold px-4 py-2"
+            >
+                {{ 'COMMON.CONFIRM' | translate }}
+            </button>
+            <button
+                popovertarget="deletePopover"
+                popovertargetaction="hide"
+                class="button bg-gray-300 cursor-pointer text-black bricolage border-2 border-black font-bold px-4 py-2"
+            >
+                {{ 'COMMON.CANCEL' | translate }}
+            </button>
+        </div>
+    </div>
+    <div class="bg-white border-black border-2 p-4">
+        <h2 class="text-3xl bricolage font-extrabold">
+            {{ weapon.name | uppercase }} {{ 'COMMON.DETAILS' | translate }}
+        </h2>
+        <div class="mt-4">
+            <section>
+                <p>
+                    {{ 'WEAPONS.STATS.ATTACK_DAMAGE' | translate }}:
+                    {{ weapon.attackDamage }}
+                </p>
+                <p>
+                    {{ 'WEAPONS.STATS.CRITICAL_CHANCE' | translate }}:
+                    {{ weapon.criticalChance }}
+                </p>
+                <p>
+                    {{ 'WEAPONS.STATS.DODGE' | translate }}: {{ weapon.dodge }}
+                </p>
+                <p>{{ 'WEAPONS.STATS.HP' | translate }}: {{ weapon.hp }}</p>
+            </section>
+        </div>
+        <button
+            (click)="editMenuOpened = !editMenuOpened"
+            class="button bg-purple-500 cursor-pointer text-black bricolage border-2 border-black font-bold px-4 py-2 mt-4"
+        >
+            {{ 'WEAPONS.EDIT_WEAPON' | translate }}
+        </button>
+    </div>
+
+    <div class="bg-white border-black border-2 p-4">
+        <h2 class="text-2xl bricolage font-bold mb-4">
+            {{ 'WEAPONS.HEROES_USING' | translate }}
+        </h2>
+
+        <div *ngIf="heroesUsingWeapon.length > 0" class="space-y-4">
+            <a
+                *ngFor="let hero of heroesUsingWeapon"
+                [routerLink]="['/heroes', hero.id]"
+                class="flex justify-between items-center p-4 border-2 border-black hover:bg-gray-50 cursor-pointer transition-colors"
+            >
+                <div>
+                    <h3 class="font-bold text-lg">
+                        {{ hero.name }} {{ hero.surname }}
+                    </h3>
+                    <div class="text-sm text-gray-600 mt-1">
+                        {{ 'DASHBOARD.STATS.HP' | translate }}: {{ hero.hp }} |
+                        {{ 'DASHBOARD.STATS.ATK' | translate }}:
+                        {{ hero.attackDamage }}
+                    </div>
+                </div>
+                <div
+                    class="text-sm font-bold px-3 py-1 bg-yellow-100 border-2 border-black"
+                >
+                    {{ 'COMMON.POWER' | translate }}:
+                    {{
+                        hero.attackDamage +
+                            hero.criticalChance +
+                            hero.dodge +
+                            hero.hp
+                    }}
+                </div>
+            </a>
+        </div>
+
+        <div
+            *ngIf="heroesUsingWeapon.length === 0"
+            class="text-gray-500 text-center py-8"
+        >
+            {{ 'WEAPONS.NO_HEROES' | translate }}
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+        *ngIf="editMenuOpened"
+        class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full"
+    >
+        <div
+            class="relative top-32 mx-auto p-5 w-96 bg-white box-shadow-black border-2 border-black"
+        >
+            <div class="mt-3">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 bricolage">
+                    {{ 'WEAPONS.EDIT_WEAPON' | translate }}: {{ weapon.name }}
+                </h3>
+                <div class="mt-2">
+                    <form
+                        [formGroup]="weaponForm"
+                        (ngSubmit)="editWeapon()"
+                        class="space-y-4"
+                    >
+                        <div class="flex flex-col">
+                            <label
+                                for="name"
+                                class="text-sm font-medium text-gray-700 mb-1"
+                                >{{ 'WEAPONS.SORT.NAME' | translate }}:</label
+                            >
+                            <input id="name" formControlName="name" required />
+                        </div>
+                        <div
+                            *ngFor="
+                                let stat of [
+                                    'attackDamage',
+                                    'criticalChance',
+                                    'dodge',
+                                    'hp'
+                                ]
+                            "
+                            class="flex flex-col"
+                        >
+                            <label
+                                [for]="stat"
+                                class="text-sm font-medium text-gray-700 mb-1"
+                                >{{
+                                    'WEAPONS.STATS.' + stat.toUpperCase()
+                                        | translate
+                                }}:</label
+                            >
+                            <input
+                                [id]="stat"
+                                [formControlName]="stat"
+                                type="number"
+                                [min]="MIN_STAT_VALUE"
+                                [max]="MAX_STAT_VALUE"
+                                required
+                            />
+                        </div>
+                        <p class="mt-2">
+                            {{ 'COMMON.REMAINING_POINTS' | translate }}:
+                            {{ getRemainingPoints() }}
+                        </p>
+                        <div class="flex justify-between mt-6">
+                            <button
+                                type="button"
+                                (click)="editMenuOpened = false"
+                                class="button bg-gray-300 cursor-pointer text-black bricolage border-2 border-black font-bold px-4 py-2"
+                            >
+                                {{ 'COMMON.CANCEL' | translate }}
+                            </button>
+                            <button
+                                type="submit"
+                                [disabled]="
+                                    !weaponForm.valid ||
+                                    getRemainingPoints() !== 0
+                                "
+                                class="button bg-purple-500 cursor-pointer text-black bricolage border-2 border-black font-bold px-4 py-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                {{ 'COMMON.SAVE' | translate }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

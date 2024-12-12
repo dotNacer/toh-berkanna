@@ -1,0 +1,229 @@
+<div class="p-4 md:p-16">
+    <!-- Modal de victoire -->
+    <div
+        *ngIf="battleState.winner"
+        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+    >
+        <div
+            class="bg-white border-2 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+        >
+            <h2 class="text-2xl bricolage font-bold text-green-600 mb-4">
+                {{ battleState.winner }}
+                {{ 'BATTLE.BATTLE.PLAYER_WON' | translate }}
+            </h2>
+            <p class="text-gray-600">
+                {{ 'BATTLE.BATTLE.REDIRECT_TO_LOBBY' | translate }}
+            </p>
+        </div>
+    </div>
+
+    <!-- En-tête de la room -->
+    <div class="flex justify-between items-center mb-8">
+        <h2 class="text-2xl md:text-3xl bricolage font-bold">
+            {{ 'BATTLE.BATTLE.ROOM' | translate }}: {{ battleState.roomId }}
+        </h2>
+        <button
+            (click)="leaveRoom()"
+            class="px-4 py-2 border-2 border-black bg-red-200 hover:bg-red-300 transition-colors font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px]"
+        >
+            {{ 'BATTLE.BATTLE.LEAVE_ROOM' | translate }}
+        </button>
+    </div>
+
+    <!-- Informations de manche et historique -->
+    <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8"
+        *ngIf="battleState.isReady"
+    >
+        <app-round
+            *ngIf="battleState.currentRound"
+            [round]="battleState.currentRound"
+            [battleState]="battleState"
+            class="block"
+        ></app-round>
+
+        <app-round-history
+            [battleState]="battleState"
+            [currentPlayerId]="getPlayerId()"
+            class="block"
+        ></app-round-history>
+    </div>
+
+    <!-- Salle d'attente -->
+    <div
+        *ngIf="!battleState.isReady"
+        class="border-2 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+    >
+        <h3 class="text-xl bricolage font-bold mb-4">
+            {{ 'BATTLE.BATTLE.WAITING_ROOM' | translate }}
+        </h3>
+        <p class="text-lg mb-4">
+            {{ 'BATTLE.BATTLE.PLAYERS_CONNECTED' | translate }}:
+            {{ battleState.players.length }}/2
+        </p>
+
+        <div
+            *ngIf="battleState.players.length < 2"
+            class="p-4 border-2 border-black bg-yellow-100 text-center"
+        >
+            {{ 'BATTLE.BATTLE.WAITING_PLAYER' | translate }}
+        </div>
+
+        <div *ngIf="battleState.players.length === 2 && !battleState.isReady">
+            <h4 class="text-xl bricolage font-bold mb-4">
+                {{ 'BATTLE.BATTLE.SELECT_HERO' | translate }}
+            </h4>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <app-hero-card
+                    *ngFor="let hero of heroes"
+                    [hero]="hero"
+                    [isSelectable]="true"
+                    (onSelect)="selectHero($event)"
+                ></app-hero-card>
+            </div>
+
+            <div class="mt-8 text-center">
+                <p *ngIf="selectedHero" class="mb-4 text-lg font-bold">
+                    {{ 'BATTLE.BATTLE.SELECTED_HERO' | translate }}
+                    {{ selectedHero.name }}
+                </p>
+
+                <button
+                    *ngIf="!isPlayerReady"
+                    [disabled]="!selectedHero"
+                    (click)="setReady()"
+                    class="px-6 py-3 border-2 border-black bg-green-200 hover:bg-green-300 transition-colors font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                    {{ 'BATTLE.BATTLE.READY' | translate }}
+                </button>
+                <p
+                    *ngIf="isPlayerReady"
+                    class="text-xl font-bold text-yellow-600"
+                >
+                    {{ 'BATTLE.BATTLE.WAITING_OPPONENT' | translate }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Arène de combat -->
+    <div *ngIf="battleState.isReady" class="space-y-8">
+        <div
+            class="border-2 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+        >
+            <h3 class="text-2xl bricolage font-bold mb-6">
+                {{ 'BATTLE.BATTLE.FIGHT_IN_PROGRESS' | translate }}
+            </h3>
+            <!-- Information des joueurs -->
+            <div class="grid grid-cols-2 gap-8">
+                <div
+                    *ngFor="let player of battleState.players"
+                    class="border-2 border-black p-6"
+                >
+                    <p class="text-lg font-bold mb-4">
+                        {{ 'BATTLE.BATTLE.PLAYER' | translate }}:
+                        {{
+                            battleState.playerNames.get(player) ||
+                                'Joueur inconnu'
+                        }}
+                    </p>
+
+                    <div
+                        *ngIf="
+                            battleState.selectedHeroes.get(
+                                player
+                            ) as selectedHero
+                        "
+                    >
+                        <app-hero-card
+                            [hero]="selectedHero"
+                            [isSelectable]="false"
+                        ></app-hero-card>
+
+                        <!-- Barre de vie -->
+                        <div class="mt-4">
+                            <p class="font-bold mb-2">
+                                {{ 'STATS.HP' | translate }}:
+                                {{
+                                    battleState.currentHP.get(player) ||
+                                        selectedHero.hp
+                                }}/{{ selectedHero.hp }}
+                            </p>
+                            <div
+                                class="w-full h-4 border-2 border-black bg-white"
+                            >
+                                <div
+                                    class="h-full transition-all duration-300"
+                                    [ngClass]="{
+                                        'bg-green-400':
+                                            (battleState.currentHP.get(
+                                                player
+                                            ) || selectedHero.hp) /
+                                                selectedHero.hp >
+                                            0.66,
+                                        'bg-yellow-400':
+                                            (battleState.currentHP.get(
+                                                player
+                                            ) || selectedHero.hp) /
+                                                selectedHero.hp <=
+                                                0.66 &&
+                                            (battleState.currentHP.get(
+                                                player
+                                            ) || selectedHero.hp) /
+                                                selectedHero.hp >
+                                                0.33,
+                                        'bg-red-500':
+                                            (battleState.currentHP.get(
+                                                player
+                                            ) || selectedHero.hp) /
+                                                selectedHero.hp <=
+                                            0.33
+                                    }"
+                                    [style.width.%]="
+                                        ((battleState.currentHP.get(player) ||
+                                            selectedHero.hp) /
+                                            selectedHero.hp) *
+                                        100
+                                    "
+                                ></div>
+                            </div>
+                        </div>
+
+                        <!-- Bouton d'attaque -->
+                        <button
+                            *ngIf="
+                                player !== getPlayerId() &&
+                                battleState.isReady &&
+                                canAttack(player)
+                            "
+                            (click)="attackPlayer(player)"
+                            class="mt-4 w-full px-4 py-2 border-2 border-black bg-red-200 hover:bg-red-300 transition-colors font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px]"
+                        >
+                            {{ 'BATTLE.BATTLE.ATTACK' | translate }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Événements de combat -->
+    <div class="fixed top-4 right-4 z-50 space-y-2">
+        <div
+            *ngFor="let event of battleEvents"
+            class="p-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-white animate-fade-out"
+            [ngClass]="{
+                'bg-red-500':
+                    (event.type === 'dodge' && !event.isCurrentPlayer) ||
+                    (event.type === 'hit' && event.isCurrentPlayer),
+                'bg-green-500':
+                    ((event.type === 'hit' || event.type === 'critical') &&
+                        !event.isCurrentPlayer) ||
+                    (event.type === 'dodge' && event.isCurrentPlayer)
+            }"
+        >
+            {{ event.message }}
+        </div>
+    </div>
+</div>

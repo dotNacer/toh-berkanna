@@ -1,0 +1,141 @@
+{
+    "COMMON": {
+        "WELCOME": "欢迎",
+        "LOADING": "加载中...",
+        "SAVE": "保存",
+        "CANCEL": "取消",
+        "DELETE": "删除",
+        "EDIT": "编辑",
+        "WEAPONS": "武器",
+        "HEROES": "英雄",
+        "DASHBOARD": "仪表板",
+        "BATTLE": "战斗",
+        "VIEW_ALL": "查看全部",
+        "BACK": "返回",
+        "CONFIRM": "确认",
+        "POWER": "力量",
+        "DETAILS": "详情",
+        "SEARCH": "搜索",
+        "SORT_BY": "排序方式",
+        "REMAINING_POINTS": "剩余点数"
+    },
+    "DASHBOARD": {
+        "TITLE": "仪表板",
+        "TOTAL_HEROES": "英雄总数",
+        "TOTAL_WEAPONS": "武器总数",
+        "TOTAL_POWER": "总力量",
+        "TOP_HEROES": "最强英雄",
+        "MOST_USED_WEAPONS": "最常用武器",
+        "BEST_STAT": "最佳属性",
+        "USED_BY": "使用者",
+        "HERO": "英雄",
+        "HEROES": "英雄",
+        "STATS": {
+            "HP": "生命值",
+            "ATK": "攻击力"
+        }
+    },
+    "WEAPONS": {
+        "TITLE": "武器",
+        "ADD_WEAPON": "添加武器",
+        "EDIT_WEAPON": "编辑武器",
+        "DELETE_WEAPON": "删除武器",
+        "SEARCH_PLACEHOLDER": "搜索武器...",
+        "SORT": {
+            "NAME": "名称",
+            "ATTACK_DAMAGE": "攻击伤害",
+            "CRITICAL_CHANCE": "暴击率",
+            "DODGE": "闪避",
+            "HP": "生命值"
+        },
+        "DELETE_CONFIRM": "确定要删除这个武器吗？",
+        "NO_HEROES": "目前没有英雄使用此武器",
+        "HEROES_USING": "使用此武器的英雄",
+        "STATS": {
+            "ATTACK_DAMAGE": "攻击伤害",
+            "CRITICAL_CHANCE": "暴击率",
+            "DODGE": "闪避",
+            "HP": "生命值"
+        }
+    },
+    "HEROES": {
+        "TITLE": "英雄",
+        "ADD_HERO": "添加英雄",
+        "EDIT_HERO": "编辑英雄",
+        "DELETE_HERO": "删除英雄",
+        "DELETE_CONFIRM": "确定要删除这个英雄吗？",
+        "REMOVE_WEAPON": "移除武器",
+        "SEARCH_PLACEHOLDER": "搜索英雄...",
+        "EQUIPMENT": "装备",
+        "EQUIPPED_WEAPON": "已装备武器",
+        "AVAILABLE_WEAPONS": "可用���器",
+        "SORT": {
+            "NAME": "名称",
+            "HP": "生命值",
+            "ATK": "攻击力",
+            "NICKNAME": "昵称",
+            "ATTACK_DAMAGE": "攻击伤害",
+            "CRITICAL_CHANCE": "暴击率",
+            "DODGE": "闪避"
+        }
+    },
+    "STATS": {
+        "HP": "生命值",
+        "ATK": "攻击力",
+        "CRITICAL_CHANCE": "暴击率",
+        "DODGE": "闪避",
+        "ATTACK_DAMAGE": "攻击伤害",
+        "NAME": "名称",
+        "NICKNAME": "昵称"
+    },
+    "BATTLE": {
+        "LOBBY": {
+            "TITLE": "战斗大厅",
+            "PLAYER_SETUP": "玩家设置",
+            "ENTER_NAME": "输入您的昵称",
+            "SET_USERNAME": "确认",
+            "CREATE_ROOM": "创建房间",
+            "ENTER_ROOM_NAME": "输入房间名称",
+            "SET_ROOM_NAME": "确认",
+            "AVAILABLE_ROOMS": "可用房间",
+            "NO_ROOMS": "没有可用房间",
+            "JOIN_ROOM": "加入房间"
+        },
+        "BATTLE": {
+            "PLAYER_WON": "获得胜利！",
+            "REDIRECT_TO_LOBBY": "几秒后将返回大厅...",
+            "ROOM": "房间",
+            "LEAVE_ROOM": "离开房间",
+            "PLAYERS_CONNECTED": "已连接玩家",
+            "WAITING_PLAYER": "等待其他玩家...",
+            "SELECT_HERO": "选择您的英雄",
+            "SELECTED_HERO": "已选择英雄：",
+            "WAITING_OPPONENT": "等待对手...",
+            "START_BATTLE": "开始战斗",
+            "READY": "准备就绪",
+            "PREPARED": "等待其他玩家...",
+            "PLAYER": "玩家",
+            "ATTACK": "攻击",
+            "FIGHT_IN_PROGRESS": "战斗进行中",
+            "WAITING_ROOM": "等待室"
+        },
+        "EVENTS": {
+            "DODGE": "闪避了",
+            "HIT": "受到",
+            "DAMAGE": "点伤害，来自"
+        },
+        "ROUND": {
+            "ROUND": "回合",
+            "STATUS": "状态",
+            "WINNER": "胜利者",
+            "ACTIONS": "行动"
+        },
+        "ROUND_HISTORY": {
+            "TITLE": "回合历史",
+            "WONNED": "获胜"
+        }
+    },
+    "HEADER": {
+        "TITLE": ".英雄塔"
+    }
+}

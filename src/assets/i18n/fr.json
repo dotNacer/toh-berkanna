@@ -1,0 +1,142 @@
+{
+    "COMMON": {
+        "WELCOME": "Bienvenue",
+        "LOADING": "Chargement...",
+        "SAVE": "Sauvegarder",
+        "CANCEL": "Annuler",
+        "DELETE": "Supprimer",
+        "EDIT": "Modifier",
+        "WEAPONS": "Armes",
+        "HEROES": "Héros",
+        "DASHBOARD": "Tableau de bord",
+        "BATTLE": "Combat",
+        "VIEW_ALL": "Voir tout",
+        "BACK": "Retour",
+        "CONFIRM": "Confirmer",
+        "POWER": "Puissance",
+        "DETAILS": "Détails",
+        "SEARCH": "Rechercher",
+        "SORT_BY": "Trier par",
+        "REMAINING_POINTS": "Points restants"
+    },
+    "DASHBOARD": {
+        "TITLE": "Tableau de bord",
+        "TOTAL_HEROES": "Total des Héros",
+        "TOTAL_WEAPONS": "Total des Armes",
+        "TOTAL_POWER": "Puissance Totale",
+        "TOP_HEROES": "Meilleurs Héros",
+        "MOST_USED_WEAPONS": "Armes les plus utilisées",
+        "BEST_STAT": "Meilleure stat",
+        "USED_BY": "Utilisé par",
+        "HERO": "héros",
+        "HEROES": "héros",
+        "STATS": {
+            "HP": "PV",
+            "ATK": "ATQ"
+        }
+    },
+    "WEAPONS": {
+        "TITLE": "Armes",
+        "ADD_WEAPON": "Ajouter une arme",
+        "EDIT_WEAPON": "Modifier l'arme",
+        "DELETE_WEAPON": "Supprimer l'arme",
+        "SEARCH_PLACEHOLDER": "Rechercher des armes...",
+        "SORT": {
+            "NAME": "Nom",
+            "ATTACK_DAMAGE": "Dégâts d'attaque",
+            "CRITICAL_CHANCE": "Chance critique",
+            "DODGE": "Esquive",
+            "HP": "Points de vie"
+        },
+        "DELETE_CONFIRM": "Êtes-vous sûr de vouloir supprimer cette arme ?",
+        "NO_HEROES": "Aucun héros n'utilise actuellement cette arme",
+        "HEROES_USING": "Héros utilisant cette arme",
+        "STATS": {
+            "ATTACK_DAMAGE": "Dégâts d'attaque",
+            "CRITICAL_CHANCE": "Chance critique",
+            "DODGE": "Esquive",
+            "HP": "Points de vie"
+        }
+    },
+    "HEROES": {
+        "TITLE": "Héros",
+        "ADD_HERO": "Ajouter un héro",
+        "EDIT_HERO": "Modifier le héro",
+        "DELETE_HERO": "Supprimer le héro",
+        "DELETE_CONFIRM": "Êtes-vous sûr de vouloir supprimer ce héro ?",
+        "REMOVE_WEAPON": "Supprimer l'arme",
+        "SEARCH_PLACEHOLDER": "Rechercher des héros...",
+        "EQUIPMENT": "Équipement",
+        "EQUIPPED_WEAPON": "Arme équipée",
+        "AVAILABLE_WEAPONS": "Armes disponibles",
+        "SORT": {
+            "NAME": "Nom",
+            "HP": "Points de vie",
+            "ATK": "Points d'attaque",
+            "NICKNAME": "Surnom",
+            "ATTACK_DAMAGE": "Dégâts d'attaque",
+            "CRITICAL_CHANCE": "Chance critique",
+            "DODGE": "Esquive"
+        }
+    },
+
+    "STATS": {
+        "HP": "Points de vie",
+        "ATK": "Points d'attaque",
+        "CRITICAL_CHANCE": "Chance critique",
+        "DODGE": "Esquive",
+        "ATTACK_DAMAGE": "Dégâts d'attaque",
+        "NAME": "Nom",
+        "NICKNAME": "Surnom"
+    },
+    "BATTLE": {
+        "LOBBY": {
+            "TITLE": "Accueil du combat",
+            "PLAYER_SETUP": "Configuration du joueur",
+            "ENTER_NAME": "Entrez votre pseudonyme",
+            "SET_USERNAME": "Valider",
+            "CREATE_ROOM": "Créer une salle",
+            "ENTER_ROOM_NAME": "Entrez le nom de la salle",
+            "SET_ROOM_NAME": "Valider",
+            "AVAILABLE_ROOMS": "Salles disponibles",
+            "NO_ROOMS": "Aucune salle disponible",
+            "JOIN_ROOM": "Rejoindre la salle"
+        },
+        "BATTLE": {
+            "PLAYER_WON": "a gagné la partie !",
+            "REDIRECT_TO_LOBBY": "Redirection vers le lobby dans quelques secondes...",
+            "ROOM": "Salle",
+            "LEAVE_ROOM": "Quitter la salle",
+            "PLAYERS_CONNECTED": "Joueurs connectés",
+            "WAITING_PLAYER": "En attente d'un autre joueur...",
+            "SELECT_HERO": "Sélectionnez votre héros",
+            "SELECTED_HERO": "Héros sélectionné : ",
+            "WAITING_OPPONENT": "En attente du second joueur...",
+            "START_BATTLE": "Commencer le combat",
+            "READY": "Prêt",
+            "PREPARED": "En attente de l'autre joueur...",
+            "PLAYER": "Joueur",
+            "ATTACK": "Attaquer",
+            "FIGHT_IN_PROGRESS": "Combat en cours",
+            "WAITING_ROOM": "Salle d'attente"
+        },
+        "EVENTS": {
+            "DODGE": "a esquivé l'attaque de",
+            "HIT": "a reçu",
+            "DAMAGE": "points de dégâts de"
+        },
+        "ROUND": {
+            "ROUND": "Manche",
+            "STATUS": "Statut",
+            "WINNER": "Gagnant",
+            "ACTIONS": "Actions"
+        },
+        "ROUND_HISTORY": {
+            "TITLE": "Historique des manches",
+            "WONNED": "a gagné"
+        }
+    },
+    "HEADER": {
+        "TITLE": ".tower of heros"
+    }
+}

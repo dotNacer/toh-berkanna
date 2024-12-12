@@ -1,0 +1,106 @@
+<main class="main flex flex-col md:flex-row w-full h-screen">
+    <!-- Hamburger button -->
+    <button
+        (click)="toggleMenu()"
+        class="md:hidden p-4 text-2xl fixed top-4 left-4 z-50 bg-black text-white border border-white rounded-md"
+        aria-label="Toggle menu"
+    >
+        ☰
+    </button>
+
+    <!-- Navigation -->
+    <nav
+        [class.hidden]="!isMenuOpen"
+        [class.fixed]="!isDesktop"
+        [class.inset-0]="!isDesktop"
+        [class.z-40]="!isDesktop"
+        class="md:relative md:flex flex-col w-full md:w-1/6 p-8 space-y-4 bg-black flex justify-between"
+    >
+        <div class="flex flex-col">
+            <div class="flex justify-between items-center md:block">
+                <h1 class="font-semibold text-2xl bricolage text-white">
+                    {{ 'HEADER.TITLE' | translate }}
+                </h1>
+                <button
+                    (click)="toggleMenu()"
+                    class="md:hidden text-white text-xl"
+                    aria-label="Close menu"
+                >
+                    ✕
+                </button>
+            </div>
+
+            <div class="flex flex-col space-y-4 mt-8">
+                <a
+                    routerLink="/dashboard"
+                    [class.active]="currentRoute === 'dashboard'"
+                    class="py-2 px-4 hover:bg-opacity-5 border border-white text-white bricolage font-bold nav-button"
+                    (click)="closeMenuOnMobile()"
+                >
+                    {{ 'COMMON.DASHBOARD' | translate }}
+                </a>
+                <a
+                    routerLink="/weapons"
+                    [class.active]="currentRoute === 'weapons'"
+                    class="py-2 px-4 hover:bg-opacity-5 border border-white text-white bricolage font-bold nav-button"
+                    (click)="closeMenuOnMobile()"
+                >
+                    {{ 'COMMON.WEAPONS' | translate }}
+                </a>
+                <a
+                    routerLink="/heroes"
+                    [class.active]="currentRoute === 'heroes'"
+                    class="py-2 px-4 hover:bg-opacity-5 border border-white text-white bricolage font-bold nav-button"
+                    (click)="closeMenuOnMobile()"
+                >
+                    {{ 'COMMON.HEROES' | translate }}
+                </a>
+                <a
+                    routerLink="/lobby"
+                    [class.active]="currentRoute === 'battle'"
+                    class="py-2 px-4 hover:bg-opacity-5 border border-white text-white bricolage font-bold nav-button"
+                    (click)="closeMenuOnMobile()"
+                >
+                    {{ 'COMMON.BATTLE' | translate }}
+                </a>
+            </div>
+        </div>
+
+        <!-- Language selector moved to bottom -->
+        <div class="relative">
+            <div
+                *ngIf="isLanguageDropdownOpen"
+                class="absolute bottom-full left-0 mb-2 w-48 bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-10 language-dropdown"
+            >
+                <button
+                    *ngFor="let lang of availableLanguages"
+                    (click)="switchLanguage(lang.code)"
+                    class="w-full py-2 px-4 text-left hover:bg-purple-100 border-b-2 border-black last:border-b-0 flex justify-between items-center"
+                    [class.font-bold]="currentLang === lang.code"
+                >
+                    <span>{{ lang.name }}</span>
+                    <span *ngIf="currentLang === lang.code" class="text-xs"
+                        >✓</span
+                    >
+                </button>
+            </div>
+            <button
+                (click)="toggleLanguageDropdown()"
+                class="flex items-center gap-2 px-4 py-2 text-white border-2 border-white hover:bg-white hover:text-black transition-colors"
+            >
+                <span class="bricolage font-bold">{{
+                    currentLang | uppercase
+                }}</span>
+                <span class="text-xs">▼</span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="w-full bg-[#F9F4F0] min-h-screen">
+        <router-outlet></router-outlet>
+    </div>
+
+    <div class="fixed top-0 right-0">
+        <app-messages *ngIf="enableMessages"></app-messages>
+    </div>
+</main>

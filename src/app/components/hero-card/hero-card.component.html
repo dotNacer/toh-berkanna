@@ -1,0 +1,53 @@
+<div
+    class="w-full border-2 border-black p-3 md:p-6 bg-white flex-col md:flex-row flex justify-between gap-3 md:gap-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+    [class.cursor-pointer]="isSelectable"
+    [class.hover:bg-gray-50]="isSelectable"
+    [class.active:translate-y-[2px]]="isSelectable"
+    [class.active:translate-x-[2px]]="isSelectable"
+    [class.active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]]="isSelectable"
+    (click)="isSelectable && onSelect.emit(hero)"
+>
+    <div class="flex flex-col justify-between w-full md:w-1/2">
+        <div class="flex flex-col">
+            <h5 class="text-lg md:text-2xl font-bold bricolage mb-1 md:mb-2">
+                {{ hero.name }}
+            </h5>
+            <p class="text-xs md:text-sm text-gray-500 mb-2 md:mb-4">
+                {{ hero.surname }}
+            </p>
+        </div>
+        <p class="text-xs md:text-md text-gray-500">
+            Arme équipée:
+            <span class="font-bold break-all">{{
+                hero.weaponId || 'Aucune'
+            }}</span>
+        </p>
+    </div>
+    <div class="flex flex-col w-full md:w-1/2 justify-end">
+        <ul
+            class="list-none text-xs md:text-sm space-y-1 md:space-y-2 w-full md:ml-auto flex flex-col items-end"
+        >
+            <li
+                class="border-2 border-black px-2 md:px-3 py-1 md:py-2 bg-yellow-100 w-full md:w-48"
+            >
+                <span class="font-bold">Attack:</span> {{ hero.attackDamage }}
+            </li>
+            <li
+                class="border-2 border-black px-2 md:px-3 py-1 md:py-2 bg-red-100 w-full md:w-48"
+            >
+                <span class="font-bold">Critical:</span>
+                {{ hero.criticalChance }}
+            </li>
+            <li
+                class="border-2 border-black px-2 md:px-3 py-1 md:py-2 bg-blue-100 w-full md:w-48"
+            >
+                <span class="font-bold">Dodge:</span> {{ hero.dodge }}
+            </li>
+            <li
+                class="border-2 border-black px-2 md:px-3 py-1 md:py-2 bg-green-100 w-full md:w-48"
+            >
+                <span class="font-bold">HP:</span> {{ hero.hp }}
+            </li>
+        </ul>
+    </div>
+</div>

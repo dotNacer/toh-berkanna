@@ -1,0 +1,12 @@
+.active {
+    @apply border border-white;
+    box-shadow: 2px 2px 0 0 white;
+}
+
+.nav-button {
+    @apply transition-all duration-150 relative;
+}
+
+.nav-button:hover {
+    box-shadow: 4px 4px 0 0 white;
+}

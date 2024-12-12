@@ -1,0 +1,124 @@
+<div class="p-16">
+    <!-- Header -->
+    <h1 class="text-4xl bricolage font-extrabold mb-12">
+        {{ 'DASHBOARD.TITLE' | translate }}
+    </h1>
+
+    <!-- Stats Overview -->
+    <div class="grid grid-cols-3 gap-8 mb-16">
+        <div
+            class="border-2 border-black bg-yellow-200 p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+        >
+            <h3 class="text-xl font-bold mb-2">
+                {{ 'DASHBOARD.TOTAL_HEROES' | translate }}
+            </h3>
+            <p class="text-3xl font-bold">{{ heroes.length }}</p>
+        </div>
+        <div
+            class="border-2 border-black bg-purple-200 p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+        >
+            <h3 class="text-xl font-bold mb-2">
+                {{ 'DASHBOARD.TOTAL_WEAPONS' | translate }}
+            </h3>
+            <p class="text-3xl font-bold">{{ weapons.length }}</p>
+        </div>
+        <div
+            class="border-2 border-black bg-green-200 p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+        >
+            <h3 class="text-xl font-bold mb-2">
+                {{ 'DASHBOARD.TOTAL_POWER' | translate }}
+            </h3>
+            <p class="text-3xl font-bold">{{ calculateTotalPower() }}</p>
+        </div>
+    </div>
+
+    <!-- Top Items Section -->
+    <div class="grid grid-cols-2 gap-12">
+        <!-- Top Heroes -->
+        <div
+            class="border-2 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+        >
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl bricolage font-bold">
+                    {{ 'DASHBOARD.TOP_HEROES' | translate }}
+                </h2>
+                <a
+                    routerLink="/heroes"
+                    class="px-4 py-2 border-2 border-black bg-yellow-200 hover:bg-yellow-300 transition-colors font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px]"
+                >
+                    {{ 'COMMON.VIEW_ALL' | translate }}
+                </a>
+            </div>
+            <div class="space-y-4">
+                <a
+                    *ngFor="let hero of heroes"
+                    routerLink="/heroes/{{ hero.id }}"
+                    class="flex justify-between items-center p-4 border-2 border-black hover:bg-gray-50 cursor-pointer transition-colors"
+                >
+                    <div>
+                        <h3 class="font-bold text-lg">
+                            {{ hero.name }} {{ hero.surname }}
+                        </h3>
+                        <div class="text-sm text-gray-600 mt-1">
+                            {{ 'DASHBOARD.STATS.HP' | translate }}:
+                            {{ hero.hp }} |
+                            {{ 'DASHBOARD.STATS.ATK' | translate }}:
+                            {{ hero.attackDamage }}
+                        </div>
+                    </div>
+                    <div
+                        class="text-sm font-bold px-3 py-1 bg-yellow-100 border-2 border-black"
+                    >
+                        {{ 'DASHBOARD.BEST_STAT' | translate }}:
+                        {{ getHighestStat(hero) }}
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Top Weapons -->
+        <div
+            class="border-2 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+        >
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl bricolage font-bold">
+                    {{ 'DASHBOARD.MOST_USED_WEAPONS' | translate }}
+                </h2>
+                <a
+                    routerLink="/weapons"
+                    class="px-4 py-2 border-2 border-black bg-purple-200 hover:bg-purple-300 transition-colors font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px]"
+                >
+                    {{ 'COMMON.VIEW_ALL' | translate }}
+                </a>
+            </div>
+            <div class="space-y-4">
+                <a
+                    *ngFor="let weapon of weapons"
+                    routerLink="/weapons/{{ weapon.id }}"
+                    class="flex justify-between items-center p-4 border-2 border-black hover:bg-gray-50 cursor-pointer transition-colors"
+                >
+                    <div>
+                        <h3 class="font-bold text-lg">{{ weapon.name }}</h3>
+                        <div class="text-sm text-gray-600 mt-1">
+                            {{ 'DASHBOARD.STATS.HP' | translate }}:
+                            {{ weapon.hp }} |
+                            {{ 'DASHBOARD.STATS.ATK' | translate }}:
+                            {{ weapon.attackDamage }}
+                        </div>
+                    </div>
+                    <div
+                        class="text-sm font-bold px-3 py-1 bg-purple-100 border-2 border-black"
+                    >
+                        {{ 'DASHBOARD.USED_BY' | translate }}:
+                        {{ getWeaponUsageCount(weapon.id!) }}
+                        {{
+                            getWeaponUsageCount(weapon.id!) !== 1
+                                ? ('DASHBOARD.HEROES' | translate)
+                                : ('DASHBOARD.HERO' | translate)
+                        }}
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

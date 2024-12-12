@@ -1,0 +1,26 @@
+<div class="round-container p-4 bg-gray-100 rounded-lg shadow-md">
+    <h3 class="text-lg font-bold mb-2">
+        {{ 'ROUND.ROUND' | translate }} {{ round.id }}
+    </h3>
+
+    <div class="status-info mb-4">
+        <p class="text-gray-700">
+            {{ 'ROUND.STATUS' | translate }}: {{ getStatusText() }}
+        </p>
+        <p *ngIf="round.winnerId" class="text-green-600">
+            {{ 'ROUND.WINNER' | translate }}: {{ getWinnerName() }}
+        </p>
+    </div>
+
+    <div
+        class="actions"
+        *ngIf="round.status === 'in_progress' && !round.winnerId"
+    >
+        <button
+            (click)="winRound()"
+            class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        >
+            Gagner la manche
+        </button>
+    </div>
+</div>

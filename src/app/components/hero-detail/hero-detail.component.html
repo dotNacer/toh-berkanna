@@ -1,0 +1,197 @@
+<div *ngIf="hero" class="flex flex-col gap-4 px-16 py-4">
+    <div class="flex gap-4 w-full justify-end">
+        <button
+            (click)="goBack()"
+            class="button bg-purple-500 cursor-pointer text-black bricolage border-2 border-black font-bold px-4 py-2"
+        >
+            {{ 'COMMON.BACK' | translate }}
+        </button>
+
+        <button
+            (click)="deleteHero()"
+            class="button bg-red-500 cursor-pointer text-black bricolage border-2 border-black font-bold px-4 py-2"
+        >
+            {{ 'HEROES.DELETE_HERO' | translate }}
+        </button>
+    </div>
+
+    <div class="bg-white border-black border-2 p-4">
+        <h2 class="text-3xl bricolage font-extrabold">
+            {{ hero.name | uppercase }} Details
+        </h2>
+        <div class="mt-4">
+            <p>{{ 'HEROES.SORT.NAME' | translate }}: {{ hero.name }}</p>
+            <p>{{ 'HEROES.SORT.NICKNAME' | translate }}: {{ hero.surname }}</p>
+            <section>
+                <p>
+                    {{ 'STATS.ATTACK_DAMAGE' | translate }}:
+                    {{ hero.attackDamage }}
+                </p>
+                <p>
+                    {{ 'STATS.CRITICAL_CHANCE' | translate }}:
+                    {{ hero.criticalChance }}
+                </p>
+                <p>{{ 'STATS.DODGE' | translate }}: {{ hero.dodge }}</p>
+                <p>{{ 'STATS.HP' | translate }}: {{ hero.hp }}</p>
+            </section>
+        </div>
+        <button
+            (click)="editMenuOpened = !editMenuOpened"
+            class="button bg-purple-500 cursor-pointer text-black bricolage border-2 border-black font-bold px-4 py-2 mt-4"
+        >
+            {{ 'HEROES.EDIT_HERO' | translate }}
+        </button>
+    </div>
+
+    <!-- Equipment section -->
+    <div class="bg-white border-black border-2 p-4">
+        <h3 class="text-2xl bricolage font-bold mb-4">
+            {{ 'HEROES.EQUIPMENT' | translate }}
+        </h3>
+        <div class="flex flex-col gap-4">
+            <div class="flex items-center gap-2">
+                <span class="font-bold"
+                    >{{ 'HEROES.EQUIPPED_WEAPON' | translate }}:</span
+                >
+                <span>{{
+                    selectedWeapon ? selectedWeapon.name : 'No weapon'
+                }}</span>
+            </div>
+
+            <div class="mt-4">
+                <h4 class="text-xl bricolage font-bold mb-4">
+                    {{ 'HEROES.AVAILABLE_WEAPONS' | translate }}
+                </h4>
+                <div class="grid grid-cols-2 gap-4">
+                    <div
+                        *ngFor="let weapon of weapons"
+                        class="p-4 border-2 border-black cursor-pointer hover:bg-gray-100 button"
+                        [class.box-shadow-black]="
+                            selectedWeapon?.name === weapon.name
+                        "
+                        (click)="equipWeapon(weapon)"
+                    >
+                        <h5 class="bricolage font-bold">{{ weapon.name }}</h5>
+                        <div class="text-sm">
+                            <p>
+                                {{ 'STATS.ATTACK_DAMAGE' | translate }}:
+                                {{ weapon.attackDamage }}
+                            </p>
+                            <p>
+                                {{ 'STATS.CRITICAL_CHANCE' | translate }}:
+                                {{ weapon.criticalChance }}
+                            </p>
+                            <p>
+                                {{ 'STATS.DODGE' | translate }}:
+                                {{ weapon.dodge }}
+                            </p>
+                            <p>{{ 'STATS.HP' | translate }}: {{ weapon.hp }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button
+                *ngIf="selectedWeapon"
+                (click)="equipWeapon(null)"
+                class="button bg-red-500 cursor-pointer text-black bricolage border-2 border-black font-bold px-4 py-2"
+            >
+                {{ 'HEROES.REMOVE_WEAPON' | translate }}
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+        *ngIf="editMenuOpened"
+        class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full"
+    >
+        <div
+            class="relative top-32 mx-auto p-5 w-96 bg-white box-shadow-black border-2 border-black"
+        >
+            <div class="mt-3">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 bricolage">
+                    {{ 'HEROES.EDIT_HERO' | translate }}: {{ hero.name }}
+                </h3>
+                <div class="mt-2">
+                    <form
+                        [formGroup]="heroForm"
+                        (ngSubmit)="editHero()"
+                        class="space-y-4"
+                    >
+                        <div class="flex flex-col">
+                            <label
+                                for="name"
+                                class="text-sm font-medium text-gray-700 mb-1"
+                                >Name:</label
+                            >
+                            <input id="name" formControlName="name" required />
+                        </div>
+                        <div class="flex flex-col">
+                            <label
+                                for="surname"
+                                class="text-sm font-medium text-gray-700 mb-1"
+                                >Nickname:</label
+                            >
+                            <input
+                                id="surname"
+                                formControlName="surname"
+                                required
+                            />
+                        </div>
+                        <div
+                            *ngFor="
+                                let stat of [
+                                    'attackDamage',
+                                    'criticalChance',
+                                    'dodge',
+                                    'hp'
+                                ]
+                            "
+                            class="flex flex-col"
+                        >
+                            <label
+                                [for]="stat"
+                                class="text-sm font-medium text-gray-700 mb-1"
+                                >{{ stat }}:</label
+                            >
+                            <input
+                                [id]="stat"
+                                [formControlName]="stat"
+                                type="number"
+                                [min]="1"
+                                [max]="MAX_TOTAL_POINTS"
+                                required
+                            />
+                        </div>
+                        <p class="mt-2">
+                            {{ 'COMMON.REMAINING_POINTS' | translate }}:
+                            {{ MAX_TOTAL_POINTS - calculateTotalPoints() }}
+                        </p>
+                        <div class="flex justify-between mt-6">
+                            <button
+                                type="button"
+                                (click)="editMenuOpened = false"
+                                class="button bg-gray-300 cursor-pointer text-black bricolage border-2 border-black font-bold px-4 py-2"
+                            >
+                                {{ 'COMMON.CANCEL' | translate }}
+                            </button>
+                            <button
+                                type="submit"
+                                [disabled]="
+                                    !heroForm.valid ||
+                                    MAX_TOTAL_POINTS -
+                                        calculateTotalPoints() !==
+                                        0
+                                "
+                                class="button bg-purple-500 cursor-pointer text-black bricolage border-2 border-black font-bold px-4 py-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                {{ 'COMMON.SAVE' | translate }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

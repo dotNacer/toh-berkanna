@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Geist+Mono:wght@100..900&display=swap');
+* {
+    font-family: 'Geist', sans-serif;
+}
+
+.mono {
+    font-family: 'Geist Mono', monospace;
+}
+
+.bricolage {
+    font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+.animate-fade-out {
+    animation: fadeOut 3s ease-in-out forwards;
+}
+
+.button {
+    @apply transition-all duration-150 relative;
+}
+
+.button:hover {
+    box-shadow: 4px 4px 0 0 black;
+}
+
+.button:disabled:hover {
+    box-shadow: none;
+}
+
+.button:disabled {
+    @apply opacity-50 cursor-not-allowed;
+}
+
+.box-shadow-black {
+    box-shadow: 4px 4px 0 0 black;
+}
+
+input {
+    border-radius: 0px;
+    border: none;
+    border-bottom: 2px solid black;
+    padding: 0.5rem 0.75rem;
+}
+
+input:focus {
+    outline: none;
+}

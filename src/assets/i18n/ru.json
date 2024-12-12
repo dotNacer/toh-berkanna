@@ -1,0 +1,141 @@
+{
+    "COMMON": {
+        "WELCOME": "Добро пожаловать",
+        "LOADING": "Загрузка...",
+        "SAVE": "Сохранить",
+        "CANCEL": "Отмена",
+        "DELETE": "Удалить",
+        "EDIT": "Изменить",
+        "WEAPONS": "Оружие",
+        "HEROES": "Герои",
+        "DASHBOARD": "Панель управления",
+        "BATTLE": "Битва",
+        "VIEW_ALL": "Показать все",
+        "BACK": "Назад",
+        "CONFIRM": "Подтвердить",
+        "POWER": "Сила",
+        "DETAILS": "Подробности",
+        "SEARCH": "Поиск",
+        "SORT_BY": "Сортировать по",
+        "REMAINING_POINTS": "Оставшиеся очки"
+    },
+    "DASHBOARD": {
+        "TITLE": "Панель управления",
+        "TOTAL_HEROES": "Всего героев",
+        "TOTAL_WEAPONS": "Всего оружия",
+        "TOTAL_POWER": "Общая сила",
+        "TOP_HEROES": "Лучшие герои",
+        "MOST_USED_WEAPONS": "Самое используемое оружие",
+        "BEST_STAT": "Лучшая характеристика",
+        "USED_BY": "Используется",
+        "HERO": "герой",
+        "HEROES": "героев",
+        "STATS": {
+            "HP": "ОЗ",
+            "ATK": "АТК"
+        }
+    },
+    "WEAPONS": {
+        "TITLE": "Оружие",
+        "ADD_WEAPON": "Добавить оружие",
+        "EDIT_WEAPON": "Изменить оружие",
+        "DELETE_WEAPON": "Удалить оружие",
+        "SEARCH_PLACEHOLDER": "Поиск оружия...",
+        "SORT": {
+            "NAME": "Имя",
+            "ATTACK_DAMAGE": "Урон",
+            "CRITICAL_CHANCE": "Шанс крита",
+            "DODGE": "Уклонение",
+            "HP": "Очки здоровья"
+        },
+        "DELETE_CONFIRM": "Вы уверены, что хотите удалить это оружие?",
+        "NO_HEROES": "Никто не использует это оружие",
+        "HEROES_USING": "Герои, использующие это оружие",
+        "STATS": {
+            "ATTACK_DAMAGE": "Урон",
+            "CRITICAL_CHANCE": "Шанс крита",
+            "DODGE": "Уклонение",
+            "HP": "Очки здоровья"
+        }
+    },
+    "HEROES": {
+        "TITLE": "Герои",
+        "ADD_HERO": "Добавить героя",
+        "EDIT_HERO": "Изменить героя",
+        "DELETE_HERO": "Удалить героя",
+        "DELETE_CONFIRM": "Вы уверены, что хотите удалить этого героя?",
+        "REMOVE_WEAPON": "Убрать оружие",
+        "SEARCH_PLACEHOLDER": "Поиск героев...",
+        "EQUIPMENT": "Снаряжение",
+        "EQUIPPED_WEAPON": "Экипированное оружие",
+        "AVAILABLE_WEAPONS": "Доступное оружие",
+        "SORT": {
+            "NAME": "Имя",
+            "HP": "Очки здоровья",
+            "ATK": "Очки атаки",
+            "NICKNAME": "Прозвище",
+            "ATTACK_DAMAGE": "Урон",
+            "CRITICAL_CHANCE": "Шанс крита",
+            "DODGE": "Уклонение"
+        }
+    },
+    "STATS": {
+        "HP": "Очки здоровья",
+        "ATK": "Очки атаки",
+        "CRITICAL_CHANCE": "Шанс крита",
+        "DODGE": "Уклонение",
+        "ATTACK_DAMAGE": "Урон",
+        "NAME": "Имя",
+        "NICKNAME": "Прозвище"
+    },
+    "BATTLE": {
+        "LOBBY": {
+            "TITLE": "Лобби битвы",
+            "PLAYER_SETUP": "Настройка игрока",
+            "ENTER_NAME": "Введите ваш никнейм",
+            "SET_USERNAME": "Подтвердить",
+            "CREATE_ROOM": "Создать комнату",
+            "ENTER_ROOM_NAME": "Введите название комнаты",
+            "SET_ROOM_NAME": "Подтвердить",
+            "AVAILABLE_ROOMS": "Доступные комнаты",
+            "NO_ROOMS": "Нет доступных комнат",
+            "JOIN_ROOM": "Присоединиться к комнате"
+        },
+        "BATTLE": {
+            "PLAYER_WON": "победил в игре!",
+            "REDIRECT_TO_LOBBY": "Перенаправление в лобби через несколько секунд...",
+            "ROOM": "Комната",
+            "LEAVE_ROOM": "Покинуть комнату",
+            "PLAYERS_CONNECTED": "Подключенные игроки",
+            "WAITING_PLAYER": "Ожидание другого игрока...",
+            "SELECT_HERO": "Выберите вашего героя",
+            "SELECTED_HERO": "Выбранный герой: ",
+            "WAITING_OPPONENT": "Ожидание второго игрока...",
+            "START_BATTLE": "Начать битву",
+            "READY": "Готов",
+            "PREPARED": "Ожидание другого игрока...",
+            "PLAYER": "Игрок",
+            "ATTACK": "Атаковать",
+            "FIGHT_IN_PROGRESS": "Идёт бой",
+            "WAITING_ROOM": "Комната ожидания"
+        },
+        "EVENTS": {
+            "DODGE": "уклонился от атаки",
+            "HIT": "получил",
+            "DAMAGE": "урона от"
+        },
+        "ROUND": {
+            "ROUND": "Раунд",
+            "STATUS": "Статус",
+            "WINNER": "Победитель",
+            "ACTIONS": "Действия"
+        },
+        "ROUND_HISTORY": {
+            "TITLE": "История раундов",
+            "WONNED": "победил"
+        }
+    },
+    "HEADER": {
+        "TITLE": ".башня героев"
+    }
+}
