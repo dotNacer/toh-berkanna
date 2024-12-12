@@ -126,7 +126,7 @@ export class HeroDetailComponent implements OnInit {
         const id = String(this.route.snapshot.paramMap.get('id'))
         const updatedHero: Omit<HeroInterface, 'id'> = {
             ...this.heroForm.value,
-            weaponId: this.hero.weaponId,
+            weaponId: this.hero.weaponId || null,
         }
 
         this.heroService.editHero(id, updatedHero).subscribe(() => {

@@ -53,6 +53,9 @@ export class HeroService {
 
     editHero(id: string, hero: Omit<HeroInterface, 'id'>): Observable<void> {
         const heroDocRef = doc(this.firestore, `${HeroService.url}/${id}`)
-        return from(updateDoc(heroDocRef, hero))
+        const sanitizedHero = Object.fromEntries(
+            Object.entries(hero).map(([key, value]) => [key, value ?? null])
+        )
+        return from(updateDoc(heroDocRef, sanitizedHero))
     }
 }
